@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup Label="NuGet">
+        <TargetFramework>net8.0</TargetFramework>
+        <RootNamespace>SmsAero</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <PackageId>smsaero</PackageId>
+        <Description>Library for sending SMS messages using the SmsAero API</Description>
+        <Copyright>Copyright © SmsAero</Copyright>
+        <AssemblyTitle>smsaero</AssemblyTitle>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <VersionPrefix>1.0.3</VersionPrefix>
+        <Authors>SmsAero</Authors>
+        <AssemblyName>smsaero</AssemblyName>
+        <PackageTags>SMS;smsaero;api</PackageTags>
+        <icon>icon.png</icon>
+        <PackageProjectUrl>https://github.com/smsaero/smsaero_csharp</PackageProjectUrl>
+        <license>LICENSE</license>
+        <RepositoryUrl>https://github.com/smsaero/smsaero_csharp</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+</Project>
