@@ -35,8 +35,14 @@ namespace SmsAero
 
             try {
                 SmsAeroClient smsAeroClient = new SmsAeroClient(smsAeroLogin, smsAeroApiKey);
+
+                // Отправка SMS сообщения
                 string response = await smsAeroClient.SmsSend("Hello, World!", "70000000000");
                 Console.WriteLine(response);
+                
+                // Отправка Telegram кода
+                string telegramResponse = await smsAeroClient.SendTelegram("70000000000", 1234, sign: "SMS Aero", text: "Ваш код 1234");
+                Console.WriteLine(telegramResponse);
             } catch (Exception e) {
                 Console.WriteLine("Error: " + e.Message);
             }

@@ -62,6 +62,35 @@ namespace SmsAero
             => await Send($"id={id}", "sms/status");
 
         /// <summary>
+        /// Отправка Telegram кода
+        /// </summary>
+        /// <param name="number">Номер телефона получателя</param>
+        /// <param name="numbers">Номера телефонов получателей</param>
+        /// <param name="code">Telegram код (4-8 цифр)</param>
+        /// <param name="sign">Подпись отправителя SMS</param>
+        /// <param name="text">Текст SMS сообщения</param>
+        /// <returns>string(json)</returns>
+        public async Task<string> SendTelegram(string number, int code, string[] numbers = null, string sign = "", string text = "")
+        {
+            var data = $"code={code}";
+
+            if (number != "") data += $"&number={number}";
+            if (numbers != null) data += numbers.Aggregate("", (s, s1) => $"{s}&numbers[]={s1}");
+            if (sign != "") data += $"&sign={UrlEncode(sign)}";
+            if (text != "") data += $"&text={UrlEncode(text)}";
+
+            return await Send(data, "telegram/send");
+        }
+
+        /// <summary>
+        /// Проверка статуса доставки Telegram кода
+        /// </summary>
+        /// <param name="telegramId">Идентификатор сообщения, возвращенный сервисом при отправке</param>
+        /// <returns>string(json)</returns>
+        public async Task<string> TelegramStatus(int telegramId)
+            => await Send($"id={telegramId}", "telegram/status");
+
+        /// <summary>
         /// Получение списка отправленных sms сообщений
         /// </summary>
         /// <param name="number">Фильтровать сообщения по номеру телефона</param>
